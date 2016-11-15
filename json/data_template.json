@@ -1,0 +1,47 @@
+{
+	"participant":
+	{
+		"timestamps":"012526", //when have they done the experiment
+		"birthday":"08091993", //date of birth dd/mm/yyyy
+		"degree":"", //Bachelor's degree they are currently studying
+		"condition":"1", //Condition assigned: ABAB (1) or BABA(2)
+		"meanRating_survival":"", //5 point scale rating
+		"meanRating_vacation":"", //5 point scale rating
+		"meanRating_affectiveSlider":
+		{
+			"mean_arousal":"", //Mean affective slider arousal rating
+			"mean_valence":"" //Mean affective slider valence rating
+		},
+		"meanRememberedWords_survival":"",
+		"meanRememberedWords_vacation":"",
+		"responseTime_survival":"", //total time it took to answer survival words
+		"responseTime_vacation":"", //total time it took to answer vacation words
+		"wordsRecalled":["word1","word2"], //List of words recalled
+		"misspelled_words":["wrod3","amazing"] //List of words that were recalled but weren't in the stimuli word list
+	},
+	"words":
+	[
+	{
+		"stimuli_word":"word1", //the word being analyzed
+		"context":"s", //s for survival and v for vacation
+		"recalled":"0", //0 not remembered, 1 remembered
+		"rating":"5", //5point scale rating, importance in context
+		"affective_slider":
+		{
+			"arousal":"3", //Affective slider arousal rating
+			"valence":"2" //Affective slider valence rating
+		}
+	},
+	{
+		"stimuli_word":"word2", //the word being analyzed
+		"context":"s", //s for survival and v for vacation
+		"recalled":"0", //0 not remembered, 1 remembered
+		"rating":"5", //5point scale rating, importance in context
+		"affective_slider":
+		{
+			"arousal":"3", //Affective slider arousal rating
+			"valence":"2" //Affective slider valence rating
+		}
+	}
+	]
+}

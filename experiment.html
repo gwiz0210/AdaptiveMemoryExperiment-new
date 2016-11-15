@@ -1,0 +1,122 @@
+<html>
+<head>
+  <title>Adaptive Memory Experiment</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" type="text/css" href="styles.css" />
+  <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+  <script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+  <!-- <script type="text/javascript" src="experiment.js"></script> -->
+
+</head>
+<body>
+
+  <div id="quizzie">
+  <!-- <h1>The Adaptive Memory Experiment</h1> -->
+
+    <div id="welcome">
+      <ul class="quiz-step step1 current">
+        <li class="question">
+          <div class="question-wrap">
+            <div id="intro-text">
+              <p id="welcomeDisplay"></p><br/>
+            </div>
+            <div class="answer-wrap" id="btn-wrap">
+              <div id="start-btn">
+                <p>Comenzar</p>
+              </div>
+            </div>
+            <div id="show-data"></div>
+          </div>
+        </li>
+      </ul>
+    </div>
+
+    <div id="instructions-wrap" style="display:none;">
+
+      <ul class="quiz-step step1 current">
+  			<li class="question">
+    			<div class="question-wrap">
+    				<p id="instructionsDisplay"></p></br>
+            <div class="answer-wrap">
+              <div id="1">
+                  <p>Continuar</p>
+              </div>
+            </div>
+          </div>
+        </li>
+  		</ul>
+    </div>
+
+    <div id="words-wrap" class="question-wrap" style="display:none;">
+      <div id="countdown"></div>
+      <div id="myDiv" ><p id="wordDisplay">question</p></div> <!--id="myDiv"--><!--style="display:none;"-->
+      <form id="affective-slider" > <!--style="display:none;"-->
+        <fieldset class="rating">
+          <legend>Please rate:</legend>
+          <div class="row">
+            <input onclick="rateWord(1, 0)" type="radio" id="star1" name="rating" value="1" /><label class="col-sm-1" for="star1" title="Sucks big time">1</label>
+            <input onclick="rateWord(2, 0)" type="radio" id="star2" name="rating" value="2" /><label class="col-sm-1" for="star2" title="Kinda bad">2</label>
+            <input onclick="rateWord(3, 0)" type="radio" id="star3" name="rating" value="3" /><label class="col-sm-1" for="star3" title="Meh">3</label>
+            <input onclick="rateWord(4, 0)" type="radio" id="star4" name="rating" value="4" /><label class="col-sm-1" for="star4" title="Pretty good">4</label>
+            <input onclick="rateWord(5, 0)" type="radio" id="star5" name="rating" value="5" /><label class="col-sm-1" for="star5" title="Rocks!">5</label>
+          </div>
+        </fieldset>
+
+        <!--on change doesn't work properly-->
+        <div class="AScontainer arousal"><!-- onmouseup="rateWord(document.getElementById('AS-pleasure').value, 2)"-->
+          <input onchange="rateWord(this.value, 1)" type="range" name="AS-arousal" id="AS-arousal" value="0.5" min="0" max="1" step=".01" />
+          <div class="ASintensityCue" ></div>
+        </div>
+        <div class="AScontainer pleasure">
+          <input onchange="rateWord(this.value, 2)" type="range" name="AS-pleasure" id="AS-pleasure" value="0.5" min="0" max="1" step=".01" />
+          <div class="ASintensityCue"></div>
+        </div>
+      </form>
+    </div>
+
+    <div id="distraction-wrap" class="question-wrap" style="display:none;">
+      <div id="countdown"></div>
+      <div id="myDiv" ><p id="distractionDisplay">question</p></div>
+      <div id="disAnsw">
+        <textarea id="distractionAnswers" rows="10" cols="50"></textarea>
+        </br>
+        <div class="answer-wrap" id="btn-wrap">
+          <div id="validateDistraction">
+            <p>Continuar</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="recall-wrap" class="question-wrap" style="display:none;">
+      <div id="countdown"></div>
+      </br>
+      <p>Por favor, escribe las palabras en el siguiente cuadro de texto separadas por comas.</br>Recuerda que no hace falta que sea por orden.</br>Por ejemplo: <i>vaca, coche, comida</i></p>
+      </br>
+      <textarea id="recallAnswers" rows="10" cols="50"></textarea>
+      </br>
+      <div class="answer-wrap" id="btn-wrap">
+        <div id="validateRecall">
+          <p>Continuar</p>
+        </div>
+      </div>
+    </div>
+
+    <div id="bye-wrap" class="question-wrap" style="display:none;">
+      <p>Ya hemos teminado.</br>¡Muchas gracias por participar!</p>
+      <i>Por favor, no cierres el navegador.</i>
+    </div>
+
+  </div>
+
+  <script src="js/wordStimuli.js"></script>
+  <script src="js/participantResults.js"></script>
+  <script src="js/generalExecution.js"></script>
+  <script src="js/functions.js"></script>
+</body>
+</html>
