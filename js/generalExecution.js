@@ -23,10 +23,8 @@ $(document).ready(function ()
 
   $('#instructions-wrap').click(function ()
   {
-    //console.log("cur_context: "+cur_context);
     if( cur_context == "practice" || cur_context == "survival" || cur_context == "vacation")
     {
-      // //console.log("cur_block: "+cur_block+" // cur_context: "+word_stimuli[cur_block]["context"]);
       cur_context = word_stimuli[cur_block]["context"];
 
 
@@ -36,7 +34,6 @@ $(document).ready(function ()
       document.getElementById('words-wrap').style.display = "block";
 
       seconds_left = wordTime/1000;
-      // document.getElementById('timer_div').innerHTML = seconds_left;
       showWords();
     }
     else if (cur_context == "distraction_task")
@@ -46,7 +43,6 @@ $(document).ready(function ()
     }
     else if (cur_context == "recall_task")
     {
-      //console.log("show recall task");
       show_recallTask();
     }
   });
@@ -54,7 +50,6 @@ $(document).ready(function ()
   $('#get-data').click(function ()
   {
     clickTime = new Date().getTime() / 1000;
-    // //console.log(clickTime - initTime);
   });
 
   $('#validateDistraction').click(function ()

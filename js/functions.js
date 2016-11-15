@@ -49,51 +49,25 @@ function showInstructions()
   {
     document.getElementById("instructionsDisplay").innerHTML = context_instructions[cur_context];
   }
-
-  // var countdown_timer = setInterval(function() {
-  //     document.getElementById('timer_div').innerHTML = --seconds_left;
-  //
-  //     if (seconds_left <= 0)
-  //     {
-  //         document.getElementById('timer_div').innerHTML = 'You are ready';
-  //         clearInterval(countdown_timer);
-  //     }
-  // }, 1000);
 }
 
 function showWords()
 {
-  //console.log("SHOW WORDS 0");
   document.getElementById("wordDisplay").innerHTML = words[0];
 
   var uploadWord = function()
   {
-      //console.log("sw: uploadWord");
-
       if( cur_context == "practice" )
       {
-
-        //console.log("sw: word_moveForward");
         word_moveForward();
       }
       else
       {
-        //console.log("sw: saveParticipantAnswer");
         saveParticipantAnswer();
       }
   }
 
   renew_word = setInterval(uploadWord, wordTime);
-
-  // var _word_countdown_timer = setInterval(function() {
-  //     document.getElementById('timer_div').innerHTML = --seconds_left;
-  //
-  //     if (seconds_left <= 0)
-  //     {
-  //         document.getElementById('timer_div').innerHTML = 'You are ready';
-  //         clearInterval(_word_countdown_timer);
-  //     }
-  // }, 1000);
 
 }
 
@@ -144,17 +118,11 @@ function show_recallTask()
 function answer_recallTask()
 {
   var _recalledWords = document.getElementById('recallAnswers').value;
-  //console.log("recalled words: "+_recalledWords);
   var res = _recalledWords.replace(/ /g,"");
-  //console.log(res);
   var _arrayWords = res.split(',');
-  console.log(_arrayWords);
   $.each(_arrayWords, function(i, el){
     if($.inArray(el, participant.wordsRecalled) === -1) participant.wordsRecalled.push(el);
   });
-
-  // participant.wordsRecalled = res.split(',');
-  console.log(participant.wordsRecalled);
 
   for(var i = 0; i <= participant.wordsRecalled.length; i++)
   {
@@ -181,12 +149,9 @@ function answer_recallTask()
   }
 
   /*----------- CALCULATE THE MEANS ------------*/
-  console.log("survival answered: "+answeredWords_survival);
-  console.log("raw-> im: "+participant.meanRating_survival.mean_importance+" ; ar: "+  participant.meanRating_survival.mean_arousal+" ; val: "+participant.meanRating_survival.mean_valence);
   participant.meanRating_survival.mean_importance /= answeredWords_survival;
   participant.meanRating_survival.mean_arousal /= answeredWords_survival;
   participant.meanRating_survival.mean_valence /= answeredWords_survival;
-  console.log("mean-> im: "+participant.meanRating_survival.mean_importance+" ; ar: "+  participant.meanRating_survival.mean_arousal+" ; val: "+participant.meanRating_survival.mean_valence);
 
   participant.meanRating_vacation.mean_importance /= answeredWords_vacation;
   participant.meanRating_vacation.mean_arousal /= answeredWords_vacation;
