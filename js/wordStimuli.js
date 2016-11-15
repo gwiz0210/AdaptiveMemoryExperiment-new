@@ -5,7 +5,7 @@ var word_stimuli = {0:
                       {words:["baloncesto","cobra","dólar"],
                         context:"practice"},
                     2:
-                      {words:["apartamento","sal","zanahora","algodón","oxígeno","águila","cáncer","acero"],
+                      {words:["apartamento","sal","zanahoria","algodón","oxígeno","águila","cáncer","acero"],
                         context:""},
                     3:
                       {words:["martillo","camiseta","abogado","espada","tambor","camión","araña","templo"],
@@ -86,19 +86,26 @@ function word_moveForward()
 {
   //console.log("word_moveForward: "+curWord+" block: "+cur_block);
 
-  document.getElementById('star1').checked = false;
-  document.getElementById('star2').checked = false;
-  document.getElementById('star3').checked = false;
-  document.getElementById('star4').checked = false;
-  document.getElementById('star5').checked = false;
-
-  document.getElementById("AS-arousal").value = "0.5";
-  document.getElementById("AS-pleasure").value = "0.5";
+  // document.getElementById('star1').checked = false;
+  // document.getElementById('star2').checked = false;
+  // document.getElementById('star3').checked = false;
+  // document.getElementById('star4').checked = false;
+  // document.getElementById('star5').checked = false;
+  //
+  // document.getElementById("AS-arousal").value = "0.5";
+  // document.getElementById("AS-pleasure").value = "0.5";
 
   if(curWord == words.length)
   {
     if( cur_block >= 5 )
     {
+      document.getElementById("affective-slider").reset();
+
+      //console.log("next word");
+      rating = [-1,-1,-1];
+      clickTime = -1;
+      initTime = new Date().getTime() / 1000;
+
       clearInterval(renew_word);
 
       $('#welcome').hide();
@@ -116,14 +123,21 @@ function word_moveForward()
       curWord = 1;
       words = get_words(cur_block);
 
-      document.getElementById('star1').checked = false;
-      document.getElementById('star2').checked = false;
-      document.getElementById('star3').checked = false;
-      document.getElementById('star4').checked = false;
-      document.getElementById('star5').checked = false;
+      // document.getElementById('star1').checked = false;
+      // document.getElementById('star2').checked = false;
+      // document.getElementById('star3').checked = false;
+      // document.getElementById('star4').checked = false;
+      // document.getElementById('star5').checked = false;
+      //
+      // document.getElementById("AS-arousal").value = "0.5";
+      // document.getElementById("AS-pleasure").value = "0.5";
 
-      document.getElementById("AS-arousal").value = "0.5";
-      document.getElementById("AS-pleasure").value = "0.5";
+      document.getElementById("affective-slider").reset();
+
+      //console.log("next word");
+      rating = [-1,-1,-1];
+      clickTime = -1;
+      initTime = new Date().getTime() / 1000;
 
       clearInterval(renew_word);
 

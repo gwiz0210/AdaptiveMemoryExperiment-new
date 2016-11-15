@@ -68,12 +68,12 @@
         </fieldset>
 
         <!--on change doesn't work properly-->
-        <div class="AScontainer arousal"><!-- onmouseup="rateWord(document.getElementById('AS-pleasure').value, 2)"-->
-          <input onchange="rateWord(this.value, 1)" type="range" name="AS-arousal" id="AS-arousal" value="0.5" min="0" max="1" step=".01" />
+        <div class="AScontainer arousal" onmouseup="rateWord(document.getElementById('AS-arousal').value, 1)" ><!-- onmouseup="rateWord(document.getElementById('AS-pleasure').value, 2)"-->
+          <input type="range" name="AS-arousal" id="AS-arousal" value="0.5" min="0" max="1" step=".01" />
           <div class="ASintensityCue" ></div>
         </div>
-        <div class="AScontainer pleasure">
-          <input onchange="rateWord(this.value, 2)" type="range" name="AS-pleasure" id="AS-pleasure" value="0.5" min="0" max="1" step=".01" />
+        <div class="AScontainer pleasure" onmouseup="rateWord(document.getElementById('AS-pleasure').value, 2)">
+          <input type="range" name="AS-pleasure" id="AS-pleasure" value="0.5" min="0" max="1" step=".01" />
           <div class="ASintensityCue"></div>
         </div>
       </form>
@@ -109,7 +109,7 @@
 
     <div id="bye-wrap" class="question-wrap" style="display:none;">
       <p>Ya hemos teminado.</br>¡Muchas gracias por participar!</p>
-      <i>Por favor, no cierres el navegador.</i>
+      <p><i>Por favor, no cierres el navegador.</i></p>
     </div>
 
   </div>
