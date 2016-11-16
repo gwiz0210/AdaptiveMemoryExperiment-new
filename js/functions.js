@@ -83,7 +83,9 @@ function showWords()
       }
   }
 
-  renew_word = setInterval(uploadWord, wordTime);
+renew_word = setInterval(uploadWord,wordTime);
+  //setInterval(function(){
+  //  uploadWord;} wordTime);
 
   // var _word_countdown_timer = setInterval(function() {
   //     document.getElementById('timer_div').innerHTML = --seconds_left;
@@ -213,26 +215,20 @@ function answer_recallTask()
 }
 
 
-function countdown( elementName, minutes, seconds )
-{
-    var element, endTime, hours, mins, msLeft, time;
-
-    function twoDigits( n )
-    {
-        return (n <= 9 ? "0" + n : n);
+function countdown() {
+    var seconds = 11;
+   // var mins = minutes
+    function tick() {
+        var counter = document.getElementById("countdown");
+        var current_minutes = 0
+        seconds--;
+        counter.innerHTML = current_minutes.toString() + ":" + (seconds < 10 ? "0" : "") + String(seconds);
+        if( seconds > 0 ) {
+            setTimeout(tick, 1000);
+        } else{
+        countdown();
+        
+        }
     }
-
-    function updateTimer()
-    {
-        msLeft = endTime - (+new Date);
-            time = new Date( msLeft );
-            hours = time.getUTCHours();
-            mins = time.getUTCMinutes();
-            element.innerHTML = (hours ? hours + ':' + twoDigits( mins ) : mins) + ':' + twoDigits( time.getUTCSeconds() );
-            setTimeout( updateTimer, time.getUTCMilliseconds() + 500 );
-    }
-
-    element = document.getElementById( elementName );
-    endTime = (+new Date) + 1000 * (60*minutes + seconds) + 500;
-    updateTimer();
+    tick();
 }

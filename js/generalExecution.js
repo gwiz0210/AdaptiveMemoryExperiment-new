@@ -27,6 +27,9 @@ $(document).ready(function ()
     if( cur_context == "practice" || cur_context == "survival" || cur_context == "vacation")
     {
       // //console.log("cur_block: "+cur_block+" // cur_context: "+word_stimuli[cur_block]["context"]);
+      $('#countdown').show();
+      countdown();
+
       cur_context = word_stimuli[cur_block]["context"];
 
 
