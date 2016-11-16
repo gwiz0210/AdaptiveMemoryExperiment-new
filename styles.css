@@ -32,6 +32,8 @@ h1, h2, p {
   width: auto;
   margin: 1%;
 }
+
+
 #myDiv{
   text-align: center;
   display: block;
@@ -47,7 +49,7 @@ h1, h2, p {
 }
 
 #quizzie {
-  padding: 5% 0;
+  /*padding: 5% 0;*/
   /* Individual Steps/Sections */
   /* Content */
 }
@@ -101,7 +103,7 @@ h1, h2, p {
 }
 #quizzie .question-wrap, #quizzie .answer-wrap {
   display: block;
-  padding: 1%;
+  /*padding: 1%;*/
   margin: 1em 10%;
   -moz-border-radius: 10px;
   -webkit-border-radius: 10px;
