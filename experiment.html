@@ -1,6 +1,7 @@
 <html>
 <head>
-  <title>Adaptive Memory Experiment</title>
+  <!-- <title>Adaptive Memory Experiment</title> -->
+  <title>Cognitive Science Experiment</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -34,7 +35,7 @@
             </div>
             <div class="answer-wrap" id="btn-wrap">
               <div id="start-btn">
-                <p>Comenzar</p>
+                <p class="buttonText">Comenzar</p>
               </div>
             </div>
             <div id="show-data"></div>
@@ -51,7 +52,7 @@
     				<p id="instructionsDisplay"></p></br>
             <div class="answer-wrap">
               <div id="1">
-                  <p>Continuar</p>
+                  <p class="buttonText">Continuar</p>
               </div>
             </div>
           </div>
@@ -61,7 +62,7 @@
 
     <div id="words-wrap" class="question-wrap" style="display:none;">
       <div id="countdown"></div>
-      <div id="myDiv" ><p id="wordDisplay"></p></div> <!--id="myDiv"--><!--style="display:none;"-->
+      <div id="myDiv" ><p id="wordDisplay" class="buttonText"></p></div> <!--id="myDiv"--><!--style="display:none;"-->
       <form id="affective-slider" > <!--style="display:none;"-->
         <fieldset class="rating">
           <legend>Please rate:</legend>
@@ -79,10 +80,10 @@
           <input type="range" name="AS-arousal" id="AS-arousal" value="0.5" min="0" max="1" step=".01" />
           <div class="ASintensityCue" ></div>
         </div>
-        <div class="AScontainer pleasure" onmouseup="rateWord(document.getElementById('AS-pleasure').value, 2)">
+        <!-- <div class="AScontainer pleasure" onmouseup="rateWord(document.getElementById('AS-pleasure').value, 2)">
           <input type="range" name="AS-pleasure" id="AS-pleasure" value="0.5" min="0" max="1" step=".01" />
           <div class="ASintensityCue"></div>
-        </div>
+        </div> -->
       </form>
     </div>
 
@@ -94,7 +95,7 @@
         </br>
         <div class="answer-wrap" id="btn-wrap">
           <div id="validateDistraction">
-            <p>Continuar</p>
+            <p class="buttonText">Continuar</p>
           </div>
         </div>
       </div>
@@ -109,7 +110,7 @@
       </br>
       <div class="answer-wrap" id="btn-wrap">
         <div id="validateRecall">
-          <p>Continuar</p>
+          <p class="buttonText">Continuar</p>
         </div>
       </div>
     </div>
