@@ -83,6 +83,7 @@ function get_words(stage)
 
 function word_moveForward()
 {
+  // clearInterval(fadeOutWord);
 
   if(curWord == words.length)
   {
@@ -131,7 +132,10 @@ function word_moveForward()
     clickTime = -1;
     initTime = new Date().getTime() / 1000;
 
+    $('#wordDisplay').removeClass('animated fadeOut');
+    
     document.getElementById("wordDisplay").innerHTML = words[curWord];
+
 
     curWord++;
 

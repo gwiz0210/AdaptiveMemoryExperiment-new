@@ -55,6 +55,10 @@ function showWords()
 {
   document.getElementById("wordDisplay").innerHTML = words[0];
 
+  var fadeOutWord = setInterval(function(){
+    $('#wordDisplay').addClass('animated fadeOut');
+  }, 5000);
+
   var uploadWord = function()
   {
       if( cur_context == "practice" )
@@ -67,7 +71,9 @@ function showWords()
       }
   }
 
-renew_word = setInterval(uploadWord,wordTime);
+  renew_word = setInterval(uploadWord,wordTime);
+
+
   //setInterval(function(){
   //  uploadWord;} wordTime);
 
@@ -192,7 +198,7 @@ function countdown() {
             setTimeout(tick, 1000);
         } else{
         countdown();
-        
+
         }
     }
     tick();

@@ -17,12 +17,14 @@ body {
 }
 
 h1 {
-  font-family: 'Satisfy', 'cursive';
+  /*font-family: 'Satisfy', 'cursive';*/
+  font-family: 'Open Sans', sans-serif;
   font-size: 2.5em;
 }
 
 h2, p {
-  font-family: 'Pathway Gothic One', 'sans-serif';
+  /*font-family: 'Pathway Gothic One', 'sans-serif';*/
+  font-family: 'Open Sans', sans-serif;
   font-size: 2em;
 }
 
@@ -39,7 +41,8 @@ h1, h2, p {
   display: block;
   width: auto;
   margin: 1%;
-  font-family: 'Pathway Gothic One', 'sans-serif';
+  /*font-family: 'Pathway Gothic One', 'sans-serif';*/
+  font-family: 'Open Sans', sans-serif;
   font-size: 5em;
   -webkit-transition: opacity .5s ease-in-out;
   -moz-transition: opacity .5s ease-in-out;
@@ -125,7 +128,8 @@ h1, h2, p {
   display: block;
   width: auto;
   margin: 1%;
-  font-family: 'Pathway Gothic One', 'sans-serif';
+  /*font-family: 'Pathway Gothic One', 'sans-serif';*/
+  font-family: 'Open Sans', sans-serif;
   font-size: 2em;
 }
 
@@ -138,12 +142,12 @@ h1, h2, p {
   }
 
   .arousal {
-    background-image: url(images/AS_sleepy.png), url(images/AS_wideawake.png);
+    background-image: url(../images/AS_sleepy.png), url(../images/AS_wideawake.png);
     background-size:contain;
   }
 
   .pleasure {
-    background-image: url(images/AS_unhappy.png), url(images/AS_happy.png);
+    background-image: url(../images/AS_unhappy.png), url(../images/AS_happy.png);
     background-size:contain;
   }
 
@@ -165,7 +169,7 @@ h1, h2, p {
   .ASintensityCue {
     margin: 0 15px 0 15px;
     height:48px;
-    background-image: url("images/AS_intensity_cue.png");
+    background-image: url("../images/AS_intensity_cue.png");
     background-repeat: no-repeat;
     background-size:100%;
     background-position: center;
