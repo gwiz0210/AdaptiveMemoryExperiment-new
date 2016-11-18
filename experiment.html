@@ -12,13 +12,16 @@
   <link rel="stylesheet" type="text/css" href="css/animate.css" />
   <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css"> -->
 
-
   <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 
   <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
   <script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+  <!-- TIMER -->
+  <script type="text/javascript" src="./jquery.pietimer.js"></script>
+  <!-- <script type="text/javascript" src="js/jquery.pietimer.js"></script> -->
 
   <!-- <script type="text/javascript" src="experiment.js"></script> -->
 
@@ -61,11 +64,12 @@
     </div>
 
     <div id="words-wrap" class="question-wrap" style="display:none;">
-      <div id="countdown"></div>
+      <!-- <div id="countdown"></div> -->
+      <p id="timer" style="height: 50px;"></p>
       <div id="myDiv" ><p id="wordDisplay" class="buttonText"></p></div> <!--id="myDiv"--><!--style="display:none;"-->
       <form id="affective-slider" > <!--style="display:none;"-->
         <fieldset class="rating">
-          <legend>Please rate:</legend>
+          <legend>¿Qué importancia tiene la palabra en este contexto?</legend>
           <div class="row">
             <input onclick="rateWord(1, 0)" type="radio" id="star1" name="rating" value="1" /><label class="col-sm-1" for="star1" title="Sucks big time">1</label>
             <input onclick="rateWord(2, 0)" type="radio" id="star2" name="rating" value="2" /><label class="col-sm-1" for="star2" title="Kinda bad">2</label>
@@ -75,8 +79,9 @@
           </div>
         </fieldset>
 
-        <!--on change doesn't work properly-->
-        <div class="AScontainer arousal" onmouseup="rateWord(document.getElementById('AS-arousal').value, 1)" ><!-- onmouseup="rateWord(document.getElementById('AS-pleasure').value, 2)"-->
+      </br></br></br>
+        <legend>¿Cómo te hace sentir el hecho de usarla en este contexto?</legend>
+        <div class="AScontainer pleasure" onmouseup="rateWord(document.getElementById('AS-arousal').value, 1)" ><!-- onmouseup="rateWord(document.getElementById('AS-pleasure').value, 2)"-->
           <input type="range" name="AS-arousal" id="AS-arousal" value="0.5" min="0" max="1" step=".01" />
           <div class="ASintensityCue" ></div>
         </div>
@@ -89,7 +94,7 @@
 
     <div id="distraction-wrap" class="question-wrap" style="display:none;">
       <div id="countdown"></div>
-      <div id="myDiv" ><p id="distractionDisplay">question</p></div>
+      <div id="myDiv" ><p id="distractionDisplay" class="buttonText">question</p></div>
       <div id="disAnsw">
         <textarea id="distractionAnswers" rows="10" cols="50"></textarea>
         </br>
@@ -116,8 +121,8 @@
     </div>
 
     <div id="bye-wrap" class="question-wrap" style="display:none;">
-      <p>Ya hemos teminado.</br>¡Muchas gracias por participar!</p>
-      <p><i>Por favor, no cierres el navegador.</i></p>
+      <p class="buttonText">Ya hemos teminado.</br>¡Muchas gracias por participar!</p>
+      <p class="buttonText"><i>Por favor, no cierres el navegador.</i></p>
     </div>
 
   </div>

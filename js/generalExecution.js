@@ -7,7 +7,6 @@ $(document).ready(function ()
 
 
 
-
   //--------Click functions-------------
 
 
@@ -25,9 +24,27 @@ $(document).ready(function ()
   {
     if( cur_context == "practice" || cur_context == "survival" || cur_context == "vacation")
     {
-      // //console.log("cur_block: "+cur_block+" // cur_context: "+word_stimuli[cur_block]["context"]);
-      $('#countdown').show();
-      countdown();
+      $('#timer').show();
+
+      //Countdown timer
+      $('#timer').pietimer({
+        seconds: 10,
+        color: 'rgba(0, 0, 0, 0.8)',
+        height: 50,
+        width: 50,
+            is_reversed: false
+      },
+      function(){
+        if( cur_context == "practice" )
+        {
+          word_moveForward();
+        }
+        else
+        {
+          saveParticipantAnswer();
+        }
+      });
+
 
       cur_context = word_stimuli[cur_block]["context"];
 
@@ -37,7 +54,10 @@ $(document).ready(function ()
 
       document.getElementById('words-wrap').style.display = "block";
 
-      seconds_left = wordTime/1000;
+      rating = [-1,-1,-1];
+      clickTime = -1;
+      initTime = new Date().getTime() / 1000;
+
       showWords();
     }
     else if (cur_context == "distraction_task")

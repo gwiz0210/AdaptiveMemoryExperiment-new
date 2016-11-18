@@ -7,8 +7,6 @@ var clickTime;
 var condition;
 var seconds_left;
 
-var renew_word;
-
 var cur_context; //inital - practice(block[0,1]) - vacation(block[2,4]//block[3,5]) - survival(block[3,5]//block[2,4]) - distraction_task - recall_task
 var cur_block = 0;
 
@@ -55,27 +53,15 @@ function showWords()
 {
   document.getElementById("wordDisplay").innerHTML = words[0];
 
-  var fadeOutWord = setInterval(function(){
-    $('#wordDisplay').addClass('animated fadeOut');
-  }, 5000);
-
-  var uploadWord = function()
+  $('#timer').pietimer('start');
+  var fadeOutWord = setTimeout(function()
   {
-      if( cur_context == "practice" )
-      {
-        word_moveForward();
-      }
-      else
-      {
-        saveParticipantAnswer();
-      }
-  }
 
-  renew_word = setInterval(uploadWord,wordTime);
+    $('#wordDisplay').addClass('animated fadeOut');
+    if( rating[0] != -1 && rating[1] != -1 )
+      var goNext = setTimeout(function(){ word_moveForward(); }, 1000);
 
-
-  //setInterval(function(){
-  //  uploadWord;} wordTime);
+  }, 5000);
 
 }
 
@@ -157,6 +143,7 @@ function answer_recallTask()
   }
 
   /*----------- CALCULATE THE MEANS ------------*/
+  console.log("mean ratings survival: "+participant.meanRating_survival.mean_importance+" -- "+participant.meanRating_survival.mean_arousal);
   participant.meanRating_survival.mean_importance /= answeredWords_survival;
   participant.meanRating_survival.mean_arousal /= answeredWords_survival;
   participant.meanRating_survival.mean_valence /= answeredWords_survival;
@@ -186,20 +173,20 @@ function answer_recallTask()
 }
 
 
-function countdown() {
-    var seconds = 11;
-   // var mins = minutes
-    function tick() {
-        var counter = document.getElementById("countdown");
-        var current_minutes = 0
-        seconds--;
-        counter.innerHTML = current_minutes.toString() + ":" + (seconds < 10 ? "0" : "") + String(seconds);
-        if( seconds > 0 ) {
-            setTimeout(tick, 1000);
-        } else{
-        countdown();
-
-        }
-    }
-    tick();
-}
+// function countdown() {
+//     var seconds = 11;
+//    // var mins = minutes
+//     function tick() {
+//         var counter = document.getElementById("countdown");
+//         var current_minutes = 0
+//         seconds--;
+//         counter.innerHTML = current_minutes.toString() + ":" + (seconds < 10 ? "0" : "") + String(seconds);
+//         if( seconds > 0 ) {
+//             setTimeout(tick, 1000);
+//         } else{
+//         countdown();
+//
+//         }
+//     }
+//     tick();
+// }

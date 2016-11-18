@@ -70,7 +70,7 @@ function set_ParticipantInfo(_timestamp, _birthday, _degree, _condition)
 
 function add_meanRatingSurvival(_mean_importance, _mean_arousal, _mean_valence, _responseTime)
 {
-  if( _mean_importance >= 0 && _mean_arousal >= 0 && _mean_valence >= 0 ) // if the 3 have been answered
+  if( _mean_importance >= 0 && _mean_arousal >= 0 )// && _mean_valence >= 0 ) // if the 3 have been answered
   {
     totalWordsAnswered_survival ++;
     participant.meanRating_survival.mean_importance += _mean_importance;
@@ -78,13 +78,14 @@ function add_meanRatingSurvival(_mean_importance, _mean_arousal, _mean_valence, 
     participant.meanRating_survival.mean_valence += _mean_valence;
   }
 
+  console.log("response time survival: "+participant.responseTime_survival+" // response time: "+_responseTime);
   participant.responseTime_survival += _responseTime;
-  rating = [-1,-1,-1];
+  // rating = [-1,-1,-1];
 }
 
 function add_meanRatingVacation(_mean_importance, _mean_arousal, _mean_valence, _responseTime)
 {
-  if( _mean_importance >= 0 && _mean_arousal >= 0 && _mean_valence >= 0 ) // if the 3 have been answered
+  if( _mean_importance >= 0 && _mean_arousal >= 0 )// && _mean_valence >= 0 ) // if the 3 have been answered
   {
     totalWordsAnswered_vacation ++;
     participant.meanRating_vacation.mean_importance += _mean_importance;
@@ -92,8 +93,9 @@ function add_meanRatingVacation(_mean_importance, _mean_arousal, _mean_valence, 
     participant.meanRating_vacation.mean_valence += _mean_valence;
   }
 
+    console.log("response time vacation: "+participant.responseTime_vacation+" // response time: "+_responseTime);
   participant.responseTime_vacation += _responseTime;
-  rating = [-1,-1,-1];
+  // rating = [-1,-1,-1];
 }
 
 function rateWord(val, id)
@@ -101,31 +103,32 @@ function rateWord(val, id)
     rating[id] = val;
     clickTime = new Date().getTime() / 1000;
 
-    if( rating[0] != -1 && rating[1] != -1 && rating[2] != -1 )
+    if( rating[0] != -1 && rating[1] != -1 && ( cur_context == "survival" || cur_context == "vacation" ))// && rating[2] != -1 )
     {
-      clearInterval(renew_word);
       saveParticipantAnswer(parseFloat(rating[0]), parseFloat(rating[1]), parseFloat(rating[2]));
     }
 }
 
 function saveParticipantAnswer(_importance, _arousal, _valence)
 {
-  var _respTime = wordTime;
+  var _respTime = wordTime/1000;
 
   if( clickTime != -1 )
   {
     _respTime = clickTime - initTime;
   }
 
-  if( cur_context == "survival" )
+  switch(cur_context)
   {
-    answeredWords_survival ++;
-    add_meanRatingSurvival(_importance, _arousal, _valence, _respTime);
-  }
-  else( cur_context == "vacation" )
-  {
-    answeredWords_vacation ++;
-    add_meanRatingVacation(_importance, _arousal, _valence, _respTime);
+    case "survival":
+      answeredWords_survival ++;
+      add_meanRatingSurvival(_importance, _arousal, _valence, _respTime);
+      break;
+
+    case "vacation":
+      answeredWords_vacation ++;
+      add_meanRatingVacation(_importance, _arousal, _valence, _respTime);
+      break;
   }
 
   var ind = searchWord(words[curWord-1]);
@@ -136,7 +139,8 @@ function saveParticipantAnswer(_importance, _arousal, _valence)
     word_data[ind].rating.arousal = _arousal;
     word_data[ind].rating.valence = _valence;
   }
-  word_moveForward();
+
+  if( _respTime > 5 ) word_moveForward();
 }
 
 

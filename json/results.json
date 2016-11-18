@@ -14,7 +14,7 @@
 		},
 		"meanRememberedWords_survival":"",
 		"meanRememberedWords_vacation":"",
-		"responseTime_survival":"",
+		"responseTime_survival":0,
 		"responseTime_vacation":"",
 		"wordsRecalled":[],
 		"misspelled_words":[]

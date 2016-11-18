@@ -83,22 +83,21 @@ function get_words(stage)
 
 function word_moveForward()
 {
-  // clearInterval(fadeOutWord);
+  rating = [-1,-1,-1];
+  clickTime = -1;
+  initTime = new Date().getTime() / 1000;
+
+  $('#timer').pietimer('pause');
 
   if(curWord == words.length)
   {
     if( cur_block >= 5 )
     {
       document.getElementById("affective-slider").reset();
-
-      rating = [-1,-1,-1];
-      clickTime = -1;
-      initTime = new Date().getTime() / 1000;
-
-      clearInterval(renew_word);
+      if ($('#wordDisplay').hasClass('animated'))
+        $('#wordDisplay').removeClass('animated fadeOut');
 
       $('#welcome').hide();
-      // $('#question-wrap').hide();
       $('#words-wrap').hide();
       document.getElementById('instructions-wrap').style.display = "block";
 
@@ -112,12 +111,9 @@ function word_moveForward()
       words = get_words(cur_block);
 
       document.getElementById("affective-slider").reset();
+      if ($('#wordDisplay').hasClass('animated'))
+        $('#wordDisplay').removeClass('animated fadeOut');
 
-      rating = [-1,-1,-1];
-      clickTime = -1;
-      initTime = new Date().getTime() / 1000;
-
-      clearInterval(renew_word);
 
       $('#welcome').hide();
       $('#words-wrap').hide();
@@ -128,16 +124,48 @@ function word_moveForward()
   else
   {
     document.getElementById("affective-slider").reset();
-    rating = [-1,-1,-1];
-    clickTime = -1;
-    initTime = new Date().getTime() / 1000;
-
-    $('#wordDisplay').removeClass('animated fadeOut');
+    if ($('#wordDisplay').hasClass('animated'))
+      $('#wordDisplay').removeClass('animated fadeOut');
 
     document.getElementById("wordDisplay").innerHTML = words[curWord];
-
-
     curWord++;
 
+    $('#timer').pietimer({
+      seconds: 10,
+      color: 'rgba(0, 0, 0, 0.8)',
+      height: 50,
+      width: 50,
+          is_reversed: false
+    },
+    function(){
+      if( cur_context == "practice" )
+      {
+        word_moveForward();
+      }
+      else
+      {
+        saveParticipantAnswer();
+      }
+    });
+
+    $('#timer').pietimer('start');
+    var fadeOutWord = setTimeout(function()
+    {
+      $('#wordDisplay').addClass('animated fadeOut');
+      if( rating[0] != -1 && rating[1] != -1 )
+        var goNext = setTimeout(function(){ word_moveForward(); }, 1000);
+        
+      // //If the word has already been rated
+      // console.log(rating);
+      // if( rating[0] != -1 && rating[1] != -1 )
+      // {
+      //   word_moveForward();
+      // }
+      // else
+      // {
+      //   $('#wordDisplay').addClass('animated fadeOut');
+      // }
+
+    }, 5000);
   }
 }
