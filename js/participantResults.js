@@ -15,6 +15,7 @@ function setup_participant()
                   birthday:"",
                   degree:"",
                   condition:"",
+                  familiarity:{survival:0, vacation:0},
                   meanRating_survival:{mean_importance:0, mean_arousal:0, mean_valence:0},
                   meanRating_vacation:{mean_importance:0.0, mean_arousal:0.0, mean_valence:0.0},
                   meanRememberedWords_survival:0.0,
@@ -98,6 +99,12 @@ function add_meanRatingVacation(_mean_importance, _mean_arousal, _mean_valence, 
   // rating = [-1,-1,-1];
 }
 
+function rateFami(val)
+{
+  familiarity[cur_context] = val;
+  console.log(participant.familiarity);
+}
+
 function rateWord(val, id)
 {
     rating[id] = val;
@@ -140,7 +147,7 @@ function saveParticipantAnswer(_importance, _arousal, _valence)
     word_data[ind].rating.valence = _valence;
   }
 
-  if( _respTime > 5 ) word_moveForward();
+  // if( _respTime > 5 ) word_moveForward();
 }
 
 

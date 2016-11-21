@@ -12,7 +12,7 @@ var cur_block = 0;
 
 var curWord;
 
-var wordTime = 10000;
+var wordTime = 8000;
 
 function init()
 {
@@ -35,11 +35,15 @@ function showInstructions()
   {
     if (cur_block <= 3)
     {
+      console.log("context: "+cur_context);
       document.getElementById("instructionsDisplay").innerHTML = context_instructions[cur_context][0];
+      document.getElementById('instructionFami').style.display = "block";
     }
     else
     {
+      console.log("context: "+cur_context);
       document.getElementById("instructionsDisplay").innerHTML = context_instructions[cur_context][1];
+      $('#instructionFami').hide();
     }
 
   }
@@ -58,8 +62,8 @@ function showWords()
   {
 
     $('#wordDisplay').addClass('animated fadeOut');
-    if( rating[0] != -1 && rating[1] != -1 )
-      var goNext = setTimeout(function(){ word_moveForward(); }, 1000);
+    // if( rating[0] != -1 && rating[1] != -1 )
+    //   var goNext = setTimeout(function(){ word_moveForward(); }, 1000);
 
   }, 5000);
 

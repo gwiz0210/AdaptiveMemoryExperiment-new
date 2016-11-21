@@ -53,6 +53,20 @@
   			<li class="question">
     			<div class="question-wrap">
     				<p id="instructionsDisplay"></p></br>
+            <div id="instructionFami" style="display:none;"x>
+              </br></br></br>
+              <fieldset class="rating">
+                <legend>¿Cómo de familiar te resulta este contexto?</legend>
+                <div class="row">
+                  <input onclick="rateFami(1)" type="radio" id="fam1" name="rating" value="1" /><label class="col-sm-1" for="fam1" title="Sucks big time">1</label>
+                  <input onclick="rateFami(2)" type="radio" id="fam2" name="rating" value="2" /><label class="col-sm-1" for="fam2" title="Kinda bad">2</label>
+                  <input onclick="rateFami(3)" type="radio" id="fam3" name="rating" value="3" /><label class="col-sm-1" for="fam3" title="Meh">3</label>
+                  <input onclick="rateFami(4)" type="radio" id="fam4" name="rating" value="4" /><label class="col-sm-1" for="fam4" title="Pretty good">4</label>
+                  <input onclick="rateFami(5)" type="radio" id="fam5" name="rating" value="5" /><label class="col-sm-1" for="fam5" title="Rocks!">5</label>
+                </div>
+              </fieldset>
+              </br></br></br>
+          </div>
             <div class="answer-wrap">
               <div id="1">
                   <p class="buttonText">Continuar</p>
@@ -81,7 +95,7 @@
 
       </br></br></br>
         <legend>¿Cómo te hace sentir el hecho de usarla en este contexto?</legend>
-        <div class="AScontainer pleasure" onmouseup="rateWord(document.getElementById('AS-arousal').value, 1)" ><!-- onmouseup="rateWord(document.getElementById('AS-pleasure').value, 2)"-->
+        <div class="AScontainer arousal" onmouseup="rateWord(document.getElementById('AS-arousal').value, 1)" ><!-- onmouseup="rateWord(document.getElementById('AS-pleasure').value, 2)"-->
           <input type="range" name="AS-arousal" id="AS-arousal" value="0.5" min="0" max="1" step=".01" />
           <div class="ASintensityCue" ></div>
         </div>
