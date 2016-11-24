@@ -145,6 +145,7 @@ function word_moveForward()
       else
       {
         saveParticipantAnswer();
+        word_moveForward();
       }
     });
 
@@ -154,7 +155,7 @@ function word_moveForward()
       $('#wordDisplay').addClass('animated fadeOut');
       if( rating[0] != -1 && rating[1] != -1 )
         var goNext = setTimeout(function(){ word_moveForward(); }, 1000);
-        
+
       // //If the word has already been rated
       // console.log(rating);
       // if( rating[0] != -1 && rating[1] != -1 )

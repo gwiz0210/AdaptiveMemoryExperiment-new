@@ -10,7 +10,8 @@ $(document).ready(function ()
   //--------Click functions-------------
 
 
-  $('#welcome').click(function ()
+  // $('#welcome').click(function ()
+  $('#start-btn').click(function ()
   {
     $('#welcome').hide();
     $('#words-wrap').hide();
@@ -20,7 +21,8 @@ $(document).ready(function ()
     showInstructions();
   });
 
-  $('#instructions-wrap').click(function ()
+  // $('#instructions-wrap').click(function ()
+  $('#1').click(function ()
   {
     if( cur_context == "practice" || cur_context == "survival" || cur_context == "vacation")
     {
@@ -38,10 +40,13 @@ $(document).ready(function ()
         if( cur_context == "practice" )
         {
           word_moveForward();
+          console.log("move forward practice");
         }
         else
         {
           saveParticipantAnswer();
+          word_moveForward();
+          console.log("move forward surv/vac");
         }
       });
 

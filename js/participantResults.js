@@ -101,8 +101,8 @@ function add_meanRatingVacation(_mean_importance, _mean_arousal, _mean_valence, 
 
 function rateFami(val)
 {
-  familiarity[cur_context] = val;
-  console.log(participant.familiarity);
+  participant.familiarity[cur_context] = val;
+  console.log("famili: "+participant.familiarity);
 }
 
 function rateWord(val, id)
@@ -113,6 +113,7 @@ function rateWord(val, id)
     if( rating[0] != -1 && rating[1] != -1 && ( cur_context == "survival" || cur_context == "vacation" ))// && rating[2] != -1 )
     {
       saveParticipantAnswer(parseFloat(rating[0]), parseFloat(rating[1]), parseFloat(rating[2]));
+      console.log("participant answer");
     }
 }
 
@@ -147,7 +148,7 @@ function saveParticipantAnswer(_importance, _arousal, _valence)
     word_data[ind].rating.valence = _valence;
   }
 
-  // if( _respTime > 5 ) word_moveForward();
+  //  if( _respTime >= wordTime ) word_moveForward();
 }
 
 
