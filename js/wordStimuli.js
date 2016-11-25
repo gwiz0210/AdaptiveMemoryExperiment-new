@@ -44,7 +44,7 @@ var context_instructions = {
 
 var word_data = [];
 
-var distraction_digits = [0,1,2,3,4,5,6,7,8,9];
+var distraction_digits = [1,2,3,4,5,6,7];
 
 var answeredWords_survival = 0;
 var answeredWords_vacation = 0;
@@ -153,8 +153,8 @@ function word_moveForward()
     var fadeOutWord = setTimeout(function()
     {
       $('#wordDisplay').addClass('animated fadeOut');
-      if( rating[0] != -1 && rating[1] != -1 )
-        var goNext = setTimeout(function(){ word_moveForward(); }, 1000);
+      // if( rating[0] != -1 && rating[1] != -1 )
+      //   var goNext = setTimeout(function(){ word_moveForward(); }, 1000);
 
       // //If the word has already been rated
       // console.log(rating);
