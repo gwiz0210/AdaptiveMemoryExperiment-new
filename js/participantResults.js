@@ -28,45 +28,78 @@ function setup_participant()
 }
 
 // How do we assign the conditions to each participant?
-function set_ParticipantInfo(_timestamp, _birthday, _degree, _condition)
+function set_ParticipantInfo()//_timestamp, _birthday, _degree, _condition)
 {
-    participant.timestamp = _timestamp;
-    participant.birthday = _birthday;
-    participant.degree = _degree;
-    participant.condition = _condition;
+    var _birthday = document.getElementById("p_birthday").value;
+    var _degree = document.getElementById("p_degree").value;
+    var _condition = document.getElementById("p_condition").value;
 
-    //Randomize the words of each block
-    word_stimuli[2]["words"] = shuffle(word_stimuli[2]["words"]);
-
-    word_stimuli[3]["words"] = shuffle(word_stimuli[3]["words"]);
-    word_stimuli[4]["words"] = shuffle(word_stimuli[4]["words"]);
-    word_stimuli[5]["words"] = shuffle(word_stimuli[5]["words"]);
-
-    //Randomize the order of the digits of the distraction task
-    distraction_digits = shuffle(distraction_digits);
-
-    if(_condition == "1") //SVSV
+    if(_birthday != "" && _degree != "" && _condition != "")
     {
-      cur_context = "practice";
-      cur_block = 0;
+      console.log("condition: "+parseInt(_condition));
+      var _timestamp = new Date().getTime();
+      _condition = parseInt(_condition);
+      participant.timestamp = _timestamp;
+      participant.birthday = _birthday;
+      participant.degree = _degree;
+      participant.condition = _condition;
 
-      word_stimuli[2]["context"] = "survival";
-      word_stimuli[3]["context"] = "vacation";
-      word_stimuli[4]["context"] = "survival";
-      word_stimuli[5]["context"] = "vacation";
-    }
-    else //VSVS
-    {
-      cur_context = "practice";
-      cur_block = 0;
+      //Randomize the words of each block
+      word_stimuli[2]["words"] = shuffle(word_stimuli[2]["words"]);
 
-      word_stimuli[1]["context"] = "vacation";
-      word_stimuli[2]["context"] = "survival";
-      word_stimuli[3]["context"] = "vacation";
-      word_stimuli[4]["context"] = "survival";
+      word_stimuli[3]["words"] = shuffle(word_stimuli[3]["words"]);
+      word_stimuli[4]["words"] = shuffle(word_stimuli[4]["words"]);
+      word_stimuli[5]["words"] = shuffle(word_stimuli[5]["words"]);
+
+      //Randomize the order of the digits of the distraction task
+      distraction_digits = shuffle(distraction_digits);
+
+      if(_condition == 1) //SVSV
+      {
+        cur_context = "practice";
+        cur_block = 0;
+
+        word_stimuli[2]["context"] = "survival";
+        word_stimuli[3]["context"] = "vacation";
+        word_stimuli[4]["context"] = "survival";
+        word_stimuli[5]["context"] = "vacation";
+
+        setup_wordData();
+
+        $('link[rel=stylesheet][href~="css/login-style.css"]').remove();
+
+        $('#welcomeForm').hide();
+        document.getElementById("welcomeDisplay").innerHTML = context_instructions["initial"];
+        document.getElementById('welcome').style.display = "block";
+
+        showInstructions();
+      }
+      else if(_condition == 0)//VSVS
+      {
+        cur_context = "practice";
+        cur_block = 0;
+
+        word_stimuli[1]["context"] = "vacation";
+        word_stimuli[2]["context"] = "survival";
+        word_stimuli[3]["context"] = "vacation";
+        word_stimuli[4]["context"] = "survival";
+
+        setup_wordData();
+
+        $('link[rel=stylesheet][href~="css/login-style.css"]').remove();
+
+        $('#welcomeForm').hide();
+        document.getElementById("welcomeDisplay").innerHTML = context_instructions["initial"];
+        document.getElementById('welcome').style.display = "block";
+
+
+        showInstructions();
+      }
+      else alert("WRONG CONDITION!! Please do it again");
+
+
     }
-    cur_context= "recall_task";
-    setup_wordData();
+
 }
 
 function add_meanRatingSurvival(_mean_importance, _mean_arousal, _mean_valence, _responseTime)

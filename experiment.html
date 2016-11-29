@@ -16,11 +16,14 @@
   <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
   <script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <!-- <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script> -->
+
 
   <!-- TIMER -->
   <script type="text/javascript" src="./jquery.pietimer.js"></script>
 
 
+  <link rel="stylesheet" type="text/css" href="css/login-style.css">
   <link rel="stylesheet" type="text/css" href="css/animate.css" />
   <link rel="stylesheet" type="text/css" href="css/styles.css" />
   <!-- <script type="text/javascript" src="js/jquery.pietimer.js"></script> -->
@@ -31,7 +34,34 @@
 <body>
 
   <div id="quizzie">
-    <div id="welcome">
+
+    <div id="welcomeForm" class="form">
+        <ul class="tab-group">
+        </ul>
+        <div class="tab-content">
+          <div id="signup">
+            <h1>¡Bienvenido!</h1></br>
+            <form action="/" method="post">
+              <div class="field-wrap">
+                <input id="p_birthday" type="text"required autocomplete="off" placeholder="Fecha de nacimiento (DD/MM/YYYY) *"/>
+              </div>
+
+              <div class="field-wrap">
+                <input id="p_degree" type="text"required autocomplete="off" placeholder="Estudios *"/>
+              </div>
+
+              <div class="field-wrap">
+                <input id="p_condition" type="text"required autocomplete="off" style="width: 120px;" placeholder="Condición *"/>
+              </div>
+            </div>
+
+              <button id="myButton" onclick="set_ParticipantInfo()" class="button button-block"/>Comenzar</button>
+
+            </form>
+          </div>
+        </div>
+
+    <div id="welcome" style="display:none;">
       <ul class="quiz-step step1 current">
         <li class="question">
           <div class="question-wrap">
@@ -145,6 +175,7 @@
 
   </div>
 
+  <script src="js/login.js"></script>
   <script src="js/wordStimuli.js"></script>
   <script src="js/participantResults.js"></script>
   <script src="js/generalExecution.js"></script>

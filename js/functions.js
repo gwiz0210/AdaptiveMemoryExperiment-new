@@ -22,7 +22,8 @@ function init()
 
   setup_participant();
 
-  document.getElementById("welcomeDisplay").innerHTML = context_instructions["initial"];
+  // document.getElementById("welcomeDisplay").innerHTML = context_instructions["initial"];
+  document.getElementById("welcomeForm").style.display = "block";
 }
 
 function showInstructions()

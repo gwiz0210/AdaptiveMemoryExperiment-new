@@ -2,15 +2,21 @@ $(document).ready(function ()
 {
   init();
 
-    //TEEEEST!!
-    set_ParticipantInfo("timestamp", "birthday", "degree", "1")
-
-
-
   //--------Click functions-------------
 
 
   // $('#welcome').click(function ()
+  // $('#myButton').click(function ()
+  // {
+  //   console.log("click");
+  //   set_ParticipantInfo("timestamp", "birthday", "degree", "1");
+  //
+  //   $('#welcomeForm').hide();
+  //   document.getElementById('welcome').style.display = "block";
+  //
+  //   showInstructions();
+  // });
+
   $('#start-btn').click(function ()
   {
     $('#welcome').hide();
