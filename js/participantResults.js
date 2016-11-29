@@ -15,7 +15,8 @@ function setup_participant()
                   birthday:"",
                   degree:"",
                   condition:"",
-                  familiarity:{survival:0, vacation:0},
+                  survival:{familiarity:-1, arousal:-1},
+                  vacation:{familiarity:-1, arousal:-1},
                   meanRating_survival:{mean_importance:0, mean_arousal:0, mean_valence:0},
                   meanRating_vacation:{mean_importance:0.0, mean_arousal:0.0, mean_valence:0.0},
                   meanRememberedWords_survival:0.0,
@@ -132,11 +133,54 @@ function add_meanRatingVacation(_mean_importance, _mean_arousal, _mean_valence, 
   // rating = [-1,-1,-1];
 }
 
-function rateFami(val)
+function rateFami(val, _id)
 {
-  participant.familiarity[cur_context] = val;
-  console.log("famili: "+participant.familiarity);
-  document.getElementById('1').style.display = "block";
+
+  if( _id == 0 )
+  {
+    if(cur_context == "survival")
+    {
+      participant.survival.familiarity = val;
+      if(participant.survival.arousal != -1 )
+      {
+        console.log("DISPLAY!");
+        document.getElementById('1').style.display = "block";
+      }
+    }else if (cur_context == "vacation")
+    {
+      participant.vacation.familiarity = val;
+      if(participant.vacation.arousal != -1 )
+      {
+        console.log("DISPLAY!");
+        document.getElementById('1').style.display = "block";
+      }
+
+    }
+  }
+  else
+  {
+    if(cur_context == "survival")
+    {
+      participant.survival.arousal = val;
+      if(participant.survival.familiarity != -1 )
+      {
+        console.log("DISPLAY!");
+        document.getElementById('1').style.display = "block";
+      }
+
+
+    }else if (cur_context == "vacation")
+    {
+      console.log("1 / vacation -- arousal: "+participant.vacation.arousal+" familiarity: "+participant.vacation.familiarity);
+      participant.vacation.arousal = val;
+      if(participant.vacation.familiarity != -1 )
+      {
+        console.log("DISPLAY!");
+        document.getElementById('1').style.display = "block";
+      }
+
+    }
+  }
 }
 
 function rateWord(val, id)

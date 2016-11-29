@@ -54,8 +54,8 @@
                 <input id="p_condition" type="text"required autocomplete="off" style="width: 120px;" placeholder="Condición *"/>
               </div>
             </div>
-
-              <button id="myButton" onclick="set_ParticipantInfo()" class="button button-block"/>Comenzar</button>
+            <input type="button" id="myButton" onclick="set_ParticipantInfo()" class="button button-block" value="Comenzar"></input>
+              <!-- <button id="myButton" onclick="set_ParticipantInfo()" class="button button-block"/>Comenzar</button> -->
 
             </form>
           </div>
@@ -86,19 +86,25 @@
     			<div class="question-wrap">
     				<p id="instructionsDisplay"></p></br>
             <form id="instructionFami" style="display:none;">
-            </br><!--</br></br>-->
+              </br><!--</br></br>-->
               <fieldset class="rating">
                 <legend>En una escala del 1 (poco familiar) al 5 (muy familiar), ¿cómo de familiar te resulta este contexto?
 </legend>
                 <div class="row">
-                  <input onclick="rateFami(1)" type="radio" id="fam1" name="rating" value="1" /><label class="col-sm-2" for="fam1" title="Sucks big time">1</label>
-                  <input onclick="rateFami(2)" type="radio" id="fam2" name="rating" value="2" /><label class="col-sm-2" for="fam2" title="Kinda bad">2</label>
-                  <input onclick="rateFami(3)" type="radio" id="fam3" name="rating" value="3" /><label class="col-sm-2" for="fam3" title="Meh">3</label>
-                  <input onclick="rateFami(4)" type="radio" id="fam4" name="rating" value="4" /><label class="col-sm-2" for="fam4" title="Pretty good">4</label>
-                  <input onclick="rateFami(5)" type="radio" id="fam5" name="rating" value="5" /><label class="col-sm-2" for="fam5" title="Rocks!">5</label>
+                  <input onclick="rateFami(1,0)" type="radio" id="fam1" name="rating" value="1" /><label class="col-sm-2" for="fam1" title="Sucks big time">1</label>
+                  <input onclick="rateFami(2,0)" type="radio" id="fam2" name="rating" value="2" /><label class="col-sm-2" for="fam2" title="Kinda bad">2</label>
+                  <input onclick="rateFami(3,0)" type="radio" id="fam3" name="rating" value="3" /><label class="col-sm-2" for="fam3" title="Meh">3</label>
+                  <input onclick="rateFami(4,0)" type="radio" id="fam4" name="rating" value="4" /><label class="col-sm-2" for="fam4" title="Pretty good">4</label>
+                  <input onclick="rateFami(5,0)" type="radio" id="fam5" name="rating" value="5" /><label class="col-sm-2" for="fam5" title="Rocks!">5</label>
                 </div>
               </fieldset>
               </br></br>
+              <legend>En una escala del 0. (baja emicón) al 1. (muy emocionante), ¿qué intensidad emocional tienes en este contexto?
+</legend>
+              <div class="AScontainer arousal" onmouseup="rateFami(document.getElementById('AS-arousal-context').value, 1)" ><!-- onmouseup="rateWord(document.getElementById('AS-pleasure').value, 2)"-->
+                <input type="range" name="AS-arousal" id="AS-arousal-context" value="0.5" min="0" max="1" step=".01" />
+                <div class="ASintensityCue" ></div>
+              </div>
           </form>
           <p>¿Tienes alguna pregunta sobre el experimento? Si no, puedes presionar 'continuar'.</p></br>
             <div class="answer-wrap">

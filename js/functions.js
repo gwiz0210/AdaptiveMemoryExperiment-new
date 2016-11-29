@@ -171,12 +171,12 @@ function answer_recallTask()
 
   hiddenElement.href = 'data:attachment/text,' + JSON.stringify(word_data);
   hiddenElement.target = '_blank';
-  hiddenElement.download = 'word_data.json';
+  hiddenElement.download = 'wordData_'+participant.timestamp+'.json';
   hiddenElement.click();
 
   hiddenElement.href = 'data:attachment/text,' + JSON.stringify(participant);
   hiddenElement.target = '_blank';
-  hiddenElement.download = 'participant_data.json';
+  hiddenElement.download = 'participantData_'+participant.timestamp+'.json';
   hiddenElement.click();
   /*--------------------------------------------*/
 }
