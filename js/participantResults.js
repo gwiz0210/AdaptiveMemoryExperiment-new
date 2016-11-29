@@ -65,7 +65,7 @@ function set_ParticipantInfo(_timestamp, _birthday, _degree, _condition)
       word_stimuli[3]["context"] = "vacation";
       word_stimuli[4]["context"] = "survival";
     }
-
+    cur_context= "recall_task";
     setup_wordData();
 }
 
@@ -103,6 +103,7 @@ function rateFami(val)
 {
   participant.familiarity[cur_context] = val;
   console.log("famili: "+participant.familiarity);
+  document.getElementById('1').style.display = "block";
 }
 
 function rateWord(val, id)

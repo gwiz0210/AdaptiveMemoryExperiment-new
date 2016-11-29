@@ -12,7 +12,7 @@ var cur_block = 0;
 
 var curWord;
 
-var wordTime = 8000;
+var wordTime = 10000;
 
 function init()
 {
@@ -38,6 +38,9 @@ function showInstructions()
       console.log("context: "+cur_context);
       document.getElementById("instructionsDisplay").innerHTML = context_instructions[cur_context][0];
       document.getElementById('instructionFami').style.display = "block";
+
+      document.getElementById('instructionFami').reset();
+      $('#1').hide();
     }
     else
     {
@@ -108,6 +111,7 @@ function answer_distractionTask()
 
 function show_recallTask()
 {
+    console.log("SHOW RECALL TASK: hide instructions-wrap");
   $('#instructions-wrap').hide();
   document.getElementById('recall-wrap').style.display = "block";
 

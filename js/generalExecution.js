@@ -69,10 +69,29 @@ $(document).ready(function ()
     {
       show_distractionTask();
       cur_context = "recall_task";
+      $('#instructions-wrap').hide();
     }
     else if (cur_context == "recall_task")
     {
+      // $('#instructions-wrap').hide();
       show_recallTask();
+      $('#timer-recall').show();
+
+      //Countdown timer
+      $('#timer-recall').pietimer({
+        seconds: 600,
+        color: 'rgba(0, 0, 0, 0.8)',
+        height: 50,
+        width: 50,
+            is_reversed: false
+      },
+      function(){
+          answer_recallTask();
+          $('#recall-wrap').hide();
+          document.getElementById('bye-wrap').style.display = "block";
+      });
+
+      $('#timer-recall').pietimer('start');
     }
   });
 
