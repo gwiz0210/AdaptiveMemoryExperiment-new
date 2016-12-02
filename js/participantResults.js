@@ -216,7 +216,7 @@ function saveParticipantAnswer(_imp, _ar, _va)
     word_data[ind].rating.arousal = _arousal;
     word_data[ind].rating.valence = _valence;
 
-    console.log(word_data[ind].rating);
+    console.log(word_data[ind]);
   }
 
   switch(cur_context)
