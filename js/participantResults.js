@@ -3,6 +3,7 @@ var participant;
 var totalWordsAnswered_survival;
 var totalWordsAnswered_vacation;
 var rating;
+var parCondition = 1;
 
 function setup_participant()
 {
@@ -39,7 +40,7 @@ function set_ParticipantInfo()//_timestamp, _birthday, _degree, _condition)
     {
       console.log("condition: "+parseInt(_condition));
       var _timestamp = new Date().getTime();
-      _condition = parseInt(_condition);
+      _condition = parseInt(parCondition);
       participant.timestamp = _timestamp;
       participant.birthday = _birthday;
       participant.degree = _degree;
@@ -47,7 +48,6 @@ function set_ParticipantInfo()//_timestamp, _birthday, _degree, _condition)
 
       //Randomize the words of each block
       word_stimuli[2]["words"] = shuffle(word_stimuli[2]["words"]);
-
       word_stimuli[3]["words"] = shuffle(word_stimuli[3]["words"]);
       word_stimuli[4]["words"] = shuffle(word_stimuli[4]["words"]);
       word_stimuli[5]["words"] = shuffle(word_stimuli[5]["words"]);
@@ -80,10 +80,10 @@ function set_ParticipantInfo()//_timestamp, _birthday, _degree, _condition)
         cur_context = "practice";
         cur_block = 0;
 
-        word_stimuli[1]["context"] = "vacation";
-        word_stimuli[2]["context"] = "survival";
-        word_stimuli[3]["context"] = "vacation";
-        word_stimuli[4]["context"] = "survival";
+        word_stimuli[2]["context"] = "vacation";
+        word_stimuli[3]["context"] = "survival";
+        word_stimuli[4]["context"] = "vacation";
+        word_stimuli[5]["context"] = "survival";
 
         setup_wordData();
 
@@ -168,17 +168,17 @@ function rateFami(val, _id)
         document.getElementById('1').style.display = "block";
       }
 
+        console.log("1 / survival -- arousal: "+participant.vacation.arousal+" familiarity: "+participant.vacation.familiarity);
 
     }else if (cur_context == "vacation")
     {
-      console.log("1 / vacation -- arousal: "+participant.vacation.arousal+" familiarity: "+participant.vacation.familiarity);
       participant.vacation.arousal = val;
       if(participant.vacation.familiarity != -1 )
       {
         console.log("DISPLAY!");
         document.getElementById('1').style.display = "block";
       }
-
+      console.log("1 / vacation -- arousal: "+participant.vacation.arousal+" familiarity: "+participant.vacation.familiarity);
     }
   }
 }
@@ -195,8 +195,11 @@ function rateWord(val, id)
     }
 }
 
-function saveParticipantAnswer(_importance, _arousal, _valence)
+function saveParticipantAnswer(_imp, _ar, _va)
 {
+  var _importance = _imp;
+  var _arousal = _ar;
+  var _valence = _va;
   var _respTime = wordTime/1000;
 
   if( clickTime != -1 )
@@ -204,27 +207,35 @@ function saveParticipantAnswer(_importance, _arousal, _valence)
     _respTime = clickTime - initTime;
   }
 
+  var ind = searchWord(words[curWord-1]);
+  if(ind != -1)
+  {
+    console.log("before save word data: "+_respTime+" "+_importance+" "+_arousal+" "+_valence);
+    word_data[ind].resp_time = _respTime;
+    word_data[ind].rating.importance = _importance;
+    word_data[ind].rating.arousal = _arousal;
+    word_data[ind].rating.valence = _valence;
+
+    console.log(word_data[ind].rating);
+  }
+
   switch(cur_context)
   {
     case "survival":
       answeredWords_survival ++;
+
+      console.log("survival: "+_respTime+" "+_importance+" "+_arousal+" "+_valence);
       add_meanRatingSurvival(_importance, _arousal, _valence, _respTime);
       break;
 
     case "vacation":
       answeredWords_vacation ++;
+
+        console.log("vacation: "+_respTime+" "+_importance+" "+_arousal+" "+_valence);
       add_meanRatingVacation(_importance, _arousal, _valence, _respTime);
       break;
   }
 
-  var ind = searchWord(words[curWord-1]);
-  if(ind != -1)
-  {
-    word_data[ind].resp_time = _respTime;
-    word_data[ind].rating.importance = _importance;
-    word_data[ind].rating.arousal = _arousal;
-    word_data[ind].rating.valence = _valence;
-  }
 
   //  if( _respTime >= wordTime ) word_moveForward();
 }

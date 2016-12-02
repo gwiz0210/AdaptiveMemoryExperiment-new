@@ -39,7 +39,7 @@ var context_instructions = {
 
                             distraction_task:"Ahora completarás una tarea de recordar dígitos. El ordenador te mostrará siete dígitos, uno a uno. Después de que hayan aparecido todos los dígitos, te pedimos que escribas los dígitos que has visto en orden de aparición. Si no puedes recordar todos los siete dígitos, introduce tantos dígitos como puedas recordar. El ordenador te dirá cuándo has completado la tarea.",
 
-                            recall_task:"Ahora nos gustaría ver si puedes recordar las palabras que calificaste al principio del experimento. Por favor, anota las palabras de ambas tareas en tu hoja de respuestas. Puedes escribirlas en el orden que desees. Tendrás diez minutos para completar esta tarea. Un contador de tiempo en la parte superior de la pantalla te mostrará la cantidad de tiempo que te queda.</br></br>Cuando te sientas preparado para comenzar, pulsa el botón ‘Continuar’"
+                            recall_task:"Ahora nos gustaría ver si puedes recordar las palabras que calificaste al principio del experimento (de TODOS los contextos). Por favor, anota las palabras de ambas tareas en tu hoja de respuestas. Puedes escribirlas en el orden que desees. Tendrás diez minutos para completar esta tarea. Un contador de tiempo en la parte superior de la pantalla te mostrará la cantidad de tiempo que te queda.</br></br>Cuando te sientas preparado para comenzar, pulsa el botón ‘Continuar’"
                           };
 
 var word_data = [];
@@ -59,7 +59,7 @@ function setup_wordData()
                         context:word_stimuli[i].context,
                         recalled:false,
                         resp_time:"",
-                        rating:{importance:"", arousal:"", valence:""}
+                        rating:{importance:0.0, arousal:0.0, valence:0.0}
                       });
     }
   }
@@ -91,6 +91,7 @@ function word_moveForward()
 
   if(curWord == words.length)
   {
+    console.log("cur_block: "+cur_block);
     if( cur_block >= 5 )
     {
       document.getElementById("affective-slider").reset();
@@ -101,6 +102,7 @@ function word_moveForward()
       $('#words-wrap').hide();
       document.getElementById('instructions-wrap').style.display = "block";
 
+      console.log("distraction_task");
       cur_context = "distraction_task";
       showInstructions();
     }

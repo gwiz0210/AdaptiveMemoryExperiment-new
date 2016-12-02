@@ -53,6 +53,7 @@ function showInstructions()
   }
   else // initial, distraction, or recall
   {
+    console.log("Distraction task: "+cur_context);
     document.getElementById("instructionsDisplay").innerHTML = context_instructions[cur_context];
   }
 }
@@ -171,12 +172,12 @@ function answer_recallTask()
 
   hiddenElement.href = 'data:attachment/text,' + JSON.stringify(word_data);
   hiddenElement.target = '_blank';
-  hiddenElement.download = 'wordData_'+participant.timestamp+'.json';
+  hiddenElement.download = participant.timestamp+'_wordData.json';
   hiddenElement.click();
 
   hiddenElement.href = 'data:attachment/text,' + JSON.stringify(participant);
   hiddenElement.target = '_blank';
-  hiddenElement.download = 'participantData_'+participant.timestamp+'.json';
+  hiddenElement.download = participant.timestamp+'participantData.json';
   hiddenElement.click();
   /*--------------------------------------------*/
 }
