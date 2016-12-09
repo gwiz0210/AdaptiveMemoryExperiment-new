@@ -3,7 +3,7 @@ var participant;
 var totalWordsAnswered_survival;
 var totalWordsAnswered_vacation;
 var rating;
-var parCondition = 1;
+var parCondition;// = 1;
 
 function setup_participant()
 {
@@ -36,16 +36,16 @@ function set_ParticipantInfo()//_timestamp, _birthday, _degree, _condition)
     var _degree = document.getElementById("p_degree").value;
     var _condition = document.getElementById("p_condition").value;
 
+    console.log("parCondition: "+parCondition+" "+_condition);
     if(_birthday != "" && _degree != "" && _condition != "")
     {
       console.log("condition: "+parseInt(_condition));
       var _timestamp = new Date().getTime();
-      _condition = parseInt(parCondition);
+      _condition = parseInt(_condition);
       participant.timestamp = _timestamp;
       participant.birthday = _birthday;
       participant.degree = _degree;
       participant.condition = _condition;
-
       //Randomize the words of each block
       word_stimuli[2]["words"] = shuffle(word_stimuli[2]["words"]);
       word_stimuli[3]["words"] = shuffle(word_stimuli[3]["words"]);
@@ -55,8 +55,10 @@ function set_ParticipantInfo()//_timestamp, _birthday, _degree, _condition)
       //Randomize the order of the digits of the distraction task
       distraction_digits = shuffle(distraction_digits);
 
-      if(_condition == 1) //SVSV
+      if(parseInt(_condition) == 1) //SVSV
       {
+
+          console.log("CONDITION 1");
         cur_context = "practice";
         cur_block = 0;
 
@@ -75,8 +77,9 @@ function set_ParticipantInfo()//_timestamp, _birthday, _degree, _condition)
 
         showInstructions();
       }
-      else if(_condition == 0)//VSVS
+      else if(parseInt(_condition) == 0)//VSVS
       {
+        console.log("CONDITION 0");
         cur_context = "practice";
         cur_block = 0;
 
